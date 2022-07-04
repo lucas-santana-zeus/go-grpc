@@ -9,6 +9,7 @@ import (
 )
 
 func GetBlockById(c *gin.Context) {
+	id := c.Param("id")
 	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
 	if err != nil {
 		//	todo: 1 - erro caso falhe a conexão com grpc client - {error: mgs} status 500
@@ -16,7 +17,7 @@ func GetBlockById(c *gin.Context) {
 
 	client := block.NewBlocksClient(conn)
 	req := block.RequestID{
-		Id: "F1",
+		Id: id,
 	}
 
 	res, err := client.GetBlockById(context.Background(), &req)

@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "go-grpc/client/routes"
 
+func main() {
+	routes.HandleRoutes()
 }
