@@ -1,4 +1,4 @@
-
+- bibliotega flag
 - bibliotega grpc -
 - biblioteca grpc/credentials -> passa a credencial na hora de criar a conexão: grpc.WithTransportCredentials - newTLS
 
