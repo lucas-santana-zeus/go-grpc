@@ -3,12 +3,13 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/stretchr/testify/assert"
 	"go-grpc/service/models"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/gin-gonic/gin"
+	"github.com/stretchr/testify/assert"
 )
 
 func setupTestingRoutes() *gin.Engine {
@@ -32,6 +33,11 @@ func TestGetBlockById(t *testing.T) {
 	})
 
 	t.Run("Getting non existent block", func(t *testing.T) {
+		req, _ := http.NewRequest("GET", "/blocks/F1", nil)
+		res := httptest.NewRecorder()
+		r.ServeHTTP(res, req)
+		// var emptyBlock models.Block
+		assert.Equal(t, http.StatusNotFound, res.Code)
 
 	})
 }
