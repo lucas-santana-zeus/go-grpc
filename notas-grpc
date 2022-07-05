@@ -1,4 +1,5 @@
-- bibliotega grpc - 
+
+- bibliotega grpc -
 - biblioteca grpc/credentials -> passa a credencial na hora de criar a conexão: grpc.WithTransportCredentials - newTLS
 
 
@@ -8,4 +9,7 @@ service:
 
 BigQuery: 
 - acesso gcp
+- conexão e consulta
 
+redes:
+- estudar TLS, camada de segurança
