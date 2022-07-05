@@ -14,11 +14,9 @@ type Server struct {
 }
 
 func (server *Server) GetBlockById(context context.Context, req *block.RequestID) (*block.ResponseBlock, error) {
-	var resBlock block.ResponseBlock
 	blockDAO := models.GetBlockById(req.GetId())
-	resBlock.Id = blockDAO.ID
-	resBlock.ParentId = blockDAO.ParentID
-	return &resBlock, nil
+	resBlock := models.TransformBlockDAOIntoResponse(blockDAO)
+	return resBlock, nil
 }
 
 //func (server *Server) mustEmbedUnimplementedBlocksServer() {}

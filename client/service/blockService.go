@@ -29,9 +29,7 @@ func GetBlockById(id string) (models.Block, error) {
 		return models.Block{}, err
 	}
 
-	var blockDTO models.Block
-	blockDTO.ID = res.GetId()
-	blockDTO.ParentID = res.GetParentId()
+	blockDTO := models.TransformResponseIntoBlockDTO(res)
 
 	return blockDTO, nil
 }
