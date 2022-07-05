@@ -14,10 +14,14 @@ type Server struct {
 }
 
 func (server *Server) GetBlockById(context context.Context, req *block.RequestID) (*block.ResponseBlock, error) {
-	resBlock := models.GetBlockById(req.GetId())
-	return resBlock, nil
+	var resBlock block.ResponseBlock
+	blockDAO := models.GetBlockById(req.GetId())
+	resBlock.Id = blockDAO.ID
+	resBlock.ParentId = blockDAO.ParentID
+	return &resBlock, nil
 }
-func (server *Server) mustEmbedUnimplementedBlocksServer() {}
+
+//func (server *Server) mustEmbedUnimplementedBlocksServer() {}
 
 func main() {
 	server := grpc.NewServer()

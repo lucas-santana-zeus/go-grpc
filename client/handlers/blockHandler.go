@@ -4,8 +4,9 @@ import (
 	"context"
 	"github.com/gin-gonic/gin"
 	block "go-grpc/commons/pb"
+	"go-grpc/service/models"
 	"google.golang.org/grpc"
-	"log"
+	"net/http"
 )
 
 func GetBlockById(c *gin.Context) {
@@ -24,5 +25,8 @@ func GetBlockById(c *gin.Context) {
 	if err != nil {
 		//	todo: 2 - erro caso falhe a conexão com grpc client - {error: mgs} status 500
 	}
-	log.Println(res.GetId(), res.GetParentId())
+	var blockDTO models.Block
+	blockDTO.ID = res.GetId()
+	blockDTO.ParentID = res.GetParentId()
+	c.JSON(http.StatusOK, blockDTO)
 }
