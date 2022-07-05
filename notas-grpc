@@ -1,0 +1,11 @@
+- bibliotega grpc - 
+- biblioteca grpc/credentials -> passa a credencial na hora de criar a conexão: grpc.WithTransportCredentials - newTLS
+
+
+service: 
+- mover implementação das funções da interface no service para models ou um arquivo "blocks.go" - para organização
+- porque registra o server no reflect apos o pb.RegisterBlocksServer
+
+BigQuery: 
+- acesso gcp
+
