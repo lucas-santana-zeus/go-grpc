@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	block "go-grpc/commons/pb"
+	"go-grpc/service/models"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -13,10 +14,7 @@ type Server struct {
 }
 
 func (server *Server) GetBlockById(context context.Context, req *block.RequestID) (*block.ResponseBlock, error) {
-	resBlock := &block.ResponseBlock{
-		Id:       "F1",
-		ParentId: "C0",
-	}
+	resBlock := models.GetBlockById(req.GetId())
 	return resBlock, nil
 }
 func (server *Server) mustEmbedUnimplementedBlocksServer() {}
