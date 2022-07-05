@@ -13,3 +13,6 @@ BigQuery:
 
 redes:
 - estudar TLS, camada de segurança
+
+possiveis mudanças:
+- transformar o message do proto para uma unica string que contém o json da struct do block
