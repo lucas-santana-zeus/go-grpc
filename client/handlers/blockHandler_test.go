@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
-	block "go-grpc/commons/pb"
 	"go-grpc/service/models"
 	"net/http"
 	"net/http/httptest"
@@ -26,9 +25,9 @@ func TestGetBlockById(t *testing.T) {
 		req, _ := http.NewRequest("GET", "/blocks/F1", nil)
 		res := httptest.NewRecorder()
 		r.ServeHTTP(res, req)
-		var gotBlock *block.ResponseBlock
-		_ = json.Unmarshal(res.Body.Bytes(), gotBlock)
-		fmt.Println(gotBlock)
+		var gotBlock models.Block
+		_ = json.Unmarshal(res.Body.Bytes(), &gotBlock)
+		fmt.Println(&gotBlock)
 		assert.Equal(t, models.GetBlockById("F1"), gotBlock)
 	})
 
