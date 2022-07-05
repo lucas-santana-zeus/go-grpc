@@ -33,7 +33,7 @@ func TestGetBlockById(t *testing.T) {
 	})
 
 	t.Run("Getting non existent block", func(t *testing.T) {
-		req, _ := http.NewRequest("GET", "/blocks/F1", nil)
+		req, _ := http.NewRequest("GET", "/blocks/F2", nil)
 		res := httptest.NewRecorder()
 		r.ServeHTTP(res, req)
 		// var emptyBlock models.Block

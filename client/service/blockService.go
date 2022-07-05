@@ -9,12 +9,12 @@ import (
 	"google.golang.org/grpc"
 )
 
-func GetBlockById(id string) (*models.Block, error) {
+func GetBlockById(id string) (models.Block, error) {
 
 	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
 	if err != nil {
 		log.Println(err.Error())
-		return &models.Block{}, err
+		return models.Block{}, err
 	}
 
 	client := block.NewBlocksClient(conn)
@@ -26,12 +26,12 @@ func GetBlockById(id string) (*models.Block, error) {
 
 	if err != nil {
 		log.Println(err.Error())
-		return &models.Block{}, err
+		return models.Block{}, err
 	}
 
 	var blockDTO models.Block
 	blockDTO.ID = res.GetId()
 	blockDTO.ParentID = res.GetParentId()
 
-	return &blockDTO, nil
+	return blockDTO, nil
 }
