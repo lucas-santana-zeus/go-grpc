@@ -1,0 +1,28 @@
+- bibliotega flag -- pode usar pra porta, host, variavel de ambiente
+- entender como funciona go modules
+
+service: 
+- mover implementação das funções da interface no service para models ou um arquivo "blocks.go" - para organização
+- porque registra o server no reflect apos o pb.RegisterBlocksServer
+- completar os atributos do block
+
+client:
+- Verificar possiveis mudanças na chamada pro grpc
+
+BigQuery: 
+- acesso gcp
+- conexão e consulta
+
+possiveis mudanças:
+- x transformar o message do proto para uma unica string que contém o json da struct do block
+
+
+final se sobrar tempo:
+- bibliotega grpc -
+- biblioteca grpc/credentials -> passa a credencial na hora de criar a conexão: grpc.WithTransportCredentials - newTLS
+redes:
+- estudar TLS, camada de segurança
+
+/*
+    protoc --go_out=commons commons/proto/*.proto --go-grpc_out=commons
+*/
