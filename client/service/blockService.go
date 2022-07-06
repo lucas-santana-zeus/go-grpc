@@ -4,8 +4,9 @@ import (
 	"context"
 	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
-	"google.golang.org/grpc/credentials/insecure"
 	"log"
+
+	"google.golang.org/grpc/credentials/insecure"
 
 	"google.golang.org/grpc"
 )
