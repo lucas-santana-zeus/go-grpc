@@ -18,3 +18,7 @@ final se sobrar tempo:
 - biblioteca grpc/credentials -> passa a credencial na hora de criar a conexão: grpc.WithTransportCredentials - newTLS
 redes:
 - estudar TLS, camada de segurança
+
+/*
+    protoc --go_out=commons commons/proto/*.proto --go-grpc_out=commons
+*/

@@ -14,6 +14,3 @@ service Blocks {
   rpc GetBlockById(RequestID) returns (ResponseBlock){}
 }
 
-/*
-    protoc --go_out=commons commons/proto/*.proto --go-grpc_out=commons
-*/

@@ -1,6 +1,9 @@
 package models
 
-import block "go-grpc/commons/pb"
+import (
+	"encoding/json"
+	block "go-grpc/commons/pb"
+)
 
 type Block struct {
 	ID       string `json:"id,omitempty"`
@@ -23,14 +26,19 @@ func GetBlockById(id string) Block {
 
 func TransformBlockDAOIntoResponse(blockDAO Block) *block.ResponseBlock {
 	var responseBlock block.ResponseBlock
-	responseBlock.Id = blockDAO.ID
-	responseBlock.ParentId = blockDAO.ParentID
+	blockBytes, err := json.Marshal(blockDAO)
+	if err != nil {
+		return nil
+	}
+	responseBlock.BlockJson = string(blockBytes)
 	return &responseBlock
 }
 
 func TransformResponseIntoBlockDTO(response *block.ResponseBlock) Block {
-	return Block{
-		ID:       response.GetId(),
-		ParentID: response.GetParentId(),
+	var resBlock Block
+	err := json.Unmarshal([]byte(response.BlockJson), &resBlock)
+	if err != nil {
+		return Block{}
 	}
+	return resBlock
 }
