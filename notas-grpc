@@ -4,6 +4,11 @@
 service: 
 - mover implementação das funções da interface no service para models ou um arquivo "blocks.go" - para organização
 - porque registra o server no reflect apos o pb.RegisterBlocksServer
+- remover models/block.go do service para commons
+- completar os atributos do block
+
+go.mod:
+- Adicionar um arquivo go.mod em cada diretório
 
 BigQuery: 
 - acesso gcp
