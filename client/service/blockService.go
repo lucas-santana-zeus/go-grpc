@@ -4,6 +4,7 @@ import (
 	"context"
 	block "go-grpc/commons/pb"
 	"go-grpc/service/models"
+	"google.golang.org/grpc/credentials/insecure"
 	"log"
 
 	"google.golang.org/grpc"
@@ -11,7 +12,7 @@ import (
 
 func GetBlockById(id string) (models.Block, error) {
 
-	conn, err := grpc.Dial("localhost:8080", grpc.WithInsecure())
+	conn, err := grpc.Dial("localhost:8080", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Println(err.Error())
 		return models.Block{}, err
