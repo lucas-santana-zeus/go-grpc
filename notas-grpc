@@ -1,5 +1,5 @@
 - bibliotega flag -- pode usar pra porta, host, variavel de ambiente
-
+- entender como funciona go modules
 
 service: 
 - mover implementação das funções da interface no service para models ou um arquivo "blocks.go" - para organização
