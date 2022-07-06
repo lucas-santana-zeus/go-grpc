@@ -1,6 +1,4 @@
-- bibliotega flag
-- bibliotega grpc -
-- biblioteca grpc/credentials -> passa a credencial na hora de criar a conexão: grpc.WithTransportCredentials - newTLS
+- bibliotega flag -- pode usar pra porta, host, variavel de ambiente
 
 
 service: 
@@ -11,8 +9,12 @@ BigQuery:
 - acesso gcp
 - conexão e consulta
 
-redes:
-- estudar TLS, camada de segurança
-
 possiveis mudanças:
 - transformar o message do proto para uma unica string que contém o json da struct do block
+
+
+final se sobrar tempo:
+- bibliotega grpc -
+- biblioteca grpc/credentials -> passa a credencial na hora de criar a conexão: grpc.WithTransportCredentials - newTLS
+redes:
+- estudar TLS, camada de segurança
