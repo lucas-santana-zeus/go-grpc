@@ -1,4 +1,4 @@
-module go-grpc/block
+module go-grpc/client
 
 go 1.18
 
