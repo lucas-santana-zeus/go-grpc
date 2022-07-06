@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"go-grpc/commons"
 	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
 	"log"
@@ -13,7 +14,7 @@ import (
 
 func GetBlockById(id string) (models.Block, error) {
 
-	conn, err := grpc.Dial("localhost:8080", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(*commons.PORTClient, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Println(err.Error())
 		return models.Block{}, err

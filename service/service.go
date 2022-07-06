@@ -2,11 +2,13 @@ package main
 
 import (
 	"context"
+	"go-grpc/commons"
 	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
-	"google.golang.org/grpc"
 	"log"
 	"net"
+
+	"google.golang.org/grpc"
 )
 
 type Server struct {
@@ -25,7 +27,7 @@ func main() {
 	server := grpc.NewServer()
 	block.RegisterBlocksServer(server, &Server{})
 
-	listener, err := net.Listen("tcp", ":8080")
+	listener, err := net.Listen("tcp", *commons.PORTService)
 	if err != nil {
 		log.Panicln(err)
 	}
