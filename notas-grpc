@@ -10,7 +10,7 @@ BigQuery:
 - conexão e consulta
 
 possiveis mudanças:
-- transformar o message do proto para uma unica string que contém o json da struct do block
+- x transformar o message do proto para uma unica string que contém o json da struct do block
 
 
 final se sobrar tempo:
