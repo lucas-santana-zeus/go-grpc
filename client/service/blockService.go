@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
+	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
-	"go-grpc/service/models"
 	"google.golang.org/grpc/credentials/insecure"
 	"log"
 

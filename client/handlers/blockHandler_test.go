@@ -3,7 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"go-grpc/service/models"
+	"go-grpc/commons/models"
 	"net/http"
 	"net/http/httptest"
 	"testing"

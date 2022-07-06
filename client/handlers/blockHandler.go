@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"go-grpc/client/service"
-	"go-grpc/service/models"
+	"go-grpc/commons/models"
 	"net/http"
 	"reflect"
 
