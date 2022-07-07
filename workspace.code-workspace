@@ -1,13 +1,13 @@
 {
 	"folders": [
 		{
+			"path": "service"
+		},
+		{
 			"path": "client"
 		},
 		{
 			"path": "commons"
-		},
-		{
-			"path": "service"
 		}
 	],
 	"settings": {}
