@@ -1,5 +1,5 @@
-- bibliotega flag -- pode usar pra porta, host, variavel de ambiente
-- entender como funciona go modules
+- x bibliotega flag -- pode usar pra porta, host, variavel de ambiente
+- x entender como funciona go modules
 
 service: 
 - mover implementação das funções da interface no service para models ou um arquivo "blocks.go" - para organização
@@ -7,7 +7,7 @@ service:
 - completar os atributos do block
 
 client:
-- Verificar possiveis mudanças na chamada pro grpc
+- x Verificar possiveis mudanças na chamada pro grpc
 
 BigQuery: 
 - acesso gcp
