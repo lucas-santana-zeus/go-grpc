@@ -1,9 +1,11 @@
 package routes
 
 import (
-	"github.com/gin-gonic/gin"
 	"go-grpc/client/handlers"
+	"go-grpc/commons"
 	"log"
+
+	"github.com/gin-gonic/gin"
 )
 
 func HandleRoutes() {
@@ -11,7 +13,7 @@ func HandleRoutes() {
 
 	r.GET("/blocks/:id", handlers.GetBlockById)
 
-	err := r.Run(":8000")
+	err := r.Run(*commons.PORTGinAPI)
 	if err != nil {
 		log.Panicln(err)
 	}
