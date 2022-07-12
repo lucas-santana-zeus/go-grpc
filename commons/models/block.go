@@ -22,14 +22,14 @@ var blocks = []Block{{
 	DataTimestamp:    time.Now(),
 }}
 
-func GetBlockById(id string) Block {
-	//for _, b := range blocks {
-	//	if b.ID == id {
-	//		return b
-	//	}
-	//}
-	return Block{}
-}
+//func GetBlockById(id string) Block {
+//	//for _, b := range blocks {
+//	//	if b.ID == id {
+//	//		return b
+//	//	}
+//	//}
+//	return Block{}
+//}
 
 func TransformBlockDAOIntoResponse(blockDAO Block) *block.ResponseBlock {
 	var responseBlock block.ResponseBlock
