@@ -3,24 +3,31 @@ package models
 import (
 	"encoding/json"
 	block "go-grpc/commons/pb"
+	"time"
 )
 
 type Block struct {
-	ID       string `json:"id,omitempty"`
-	ParentID string `json:"parent_id,omitempty"`
+	CreatedTimestamp  time.Time `json:"created_timestamp"`
+	DataTimestamp     time.Time `json:"data_timestamp"`
+	TemperatureInst   string    `json:"temperature_inst"`
+	TemperatureMin    string    `json:"temperature_min"`
+	TemperatureMax    string    `json:"temperature_max"`
+	PrecipitationInst string    `json:"precipitation_inst"`
+	PrecipitationMin  string    `json:"precipitation_min"`
+	PrecipitationMax  string    `json:"precipitation_max"`
 }
 
 var blocks = []Block{{
-	ID:       "F1",
-	ParentID: "C0",
+	CreatedTimestamp: time.Now(),
+	DataTimestamp:    time.Now(),
 }}
 
 func GetBlockById(id string) Block {
-	for _, b := range blocks {
-		if b.ID == id {
-			return b
-		}
-	}
+	//for _, b := range blocks {
+	//	if b.ID == id {
+	//		return b
+	//	}
+	//}
 	return Block{}
 }
 
