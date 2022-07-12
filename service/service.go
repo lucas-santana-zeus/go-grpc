@@ -1,9 +1,8 @@
 package main
 
 import (
-	"context"
+	"cloud.google.com/go/bigquery"
 	"go-grpc/commons"
-	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
 	"log"
 	"net"
@@ -13,12 +12,8 @@ import (
 
 type Server struct {
 	block.UnimplementedBlocksServer
-}
-
-func (server *Server) GetBlockById(context context.Context, req *block.RequestID) (*block.ResponseBlock, error) {
-	blockDAO := models.GetBlockById(req.GetId())
-	resBlock := models.TransformBlockDAOIntoResponse(blockDAO)
-	return resBlock, nil
+	BQClient *bigquery.Client
+	//	adicionar bqClient
 }
 
 //func (server *Server) mustEmbedUnimplementedBlocksServer() {}
