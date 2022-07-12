@@ -26,7 +26,6 @@ func GetBlockById(id string) (models.Block, error) {
 	}
 
 	res, err := client.GetBlockById(context.Background(), &req)
-
 	if err != nil {
 		log.Println(err.Error())
 		return models.Block{}, err
