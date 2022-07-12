@@ -7,8 +7,8 @@ import (
 )
 
 type Block struct {
-	CreatedTimestamp  time.Time `json:"created_timestamp"`
 	DataTimestamp     time.Time `json:"data_timestamp"`
+	CreatedTimestamp  time.Time `json:"created_timestamp"`
 	TemperatureInst   string    `json:"temperature_inst"`
 	TemperatureMin    string    `json:"temperature_min"`
 	TemperatureMax    string    `json:"temperature_max"`
