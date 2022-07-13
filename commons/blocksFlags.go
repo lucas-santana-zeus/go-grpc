@@ -9,7 +9,5 @@ var (
 
 	PORTGinAPI = flag.String("port gin api", ":8000", "Gin APi server port")
 
-	HOSTAddressLocalHost = flag.String("localhost", "localhost", "localhost address")
-
 	ROUTEApi = flag.String("route api", "/api/", "api route for block")
 )

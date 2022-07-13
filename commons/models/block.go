@@ -1,3 +1,4 @@
+// Package models is responsible for the application model definition
 package models
 
 import (
@@ -7,6 +8,7 @@ import (
 	"time"
 )
 
+// Block defines the block data structure to be serialized and deserialized
 type Block struct {
 	DataTimestamp     time.Time `json:"data_timestamp"`
 	CreatedTimestamp  time.Time `json:"created_timestamp"`
@@ -18,20 +20,7 @@ type Block struct {
 	PrecipitationMax  string    `json:"precipitation_max"`
 }
 
-//var blocks = []Block{{
-//	CreatedTimestamp: time.Now(),
-//	DataTimestamp:    time.Now(),
-//}}
-
-//func GetBlockById(id string) Block {
-//	//for _, b := range blocks {
-//	//	if b.ID == id {
-//	//		return b
-//	//	}
-//	//}
-//	return Block{}
-//}
-
+// TransformBlockDAOIntoResponse serializes a block to json/string format to compose the grpc responseBlock message
 func TransformBlockDAOIntoResponse(blockDAO Block) *block.ResponseBlock {
 	var responseBlock block.ResponseBlock
 	blockBytes, err := json.Marshal(blockDAO)
@@ -43,6 +32,7 @@ func TransformBlockDAOIntoResponse(blockDAO Block) *block.ResponseBlock {
 	return &responseBlock
 }
 
+// TransformResponseIntoBlockDTO deserializes the responseBlock message as json/string format to Block
 func TransformResponseIntoBlockDTO(response *block.ResponseBlock) Block {
 	var resBlock Block
 	err := json.Unmarshal([]byte(response.BlockJson), &resBlock)
