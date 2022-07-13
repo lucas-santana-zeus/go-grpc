@@ -1,3 +1,4 @@
+// Package service is responsible for the layer that retrieve data from grpc service
 package service
 
 import (
@@ -12,6 +13,9 @@ import (
 	"google.golang.org/grpc"
 )
 
+// GetBlockById create the grpc client connection and calls the rpc function GetBlockById on proto
+//
+// the function creates a request message passing the given id and retrieve the grpc response block data returning it
 func GetBlockById(id string) (models.Block, error) {
 
 	conn, err := grpc.Dial(*commons.PORTClient, grpc.WithTransportCredentials(insecure.NewCredentials()))
