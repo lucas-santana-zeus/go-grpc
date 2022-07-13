@@ -1,3 +1,4 @@
+// Package database contains database related access and query functions
 package database
 
 import (
