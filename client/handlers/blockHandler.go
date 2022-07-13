@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetBlockById(c *gin.Context) {
+func GetBlockByIdHandler(c *gin.Context) {
 	id := c.Param("id")
 
 	blockDTO, err := service.GetBlockById(id)

@@ -28,7 +28,7 @@ func setupTestingRoutes() *gin.Engine {
 
 func TestGetBlockById(t *testing.T) {
 	r := setupTestingRoutes()
-	r.GET(*commons.ROUTEApi+":id", GetBlockById)
+	r.GET(*commons.ROUTEApi+":id", GetBlockByIdHandler)
 
 	conn, err := grpc.Dial(*commons.PORTClient, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
