@@ -29,8 +29,6 @@ func setupTestingRoutes() *gin.Engine {
 
 func TestGetBlockById(t *testing.T) {
 
-	t.Parallel()
-
 	r := setupTestingRoutes()
 	r.GET(*commons.ROUTEApi+":id", GetBlockByIdHandler)
 
@@ -41,6 +39,8 @@ func TestGetBlockById(t *testing.T) {
 	client := block.NewBlocksClient(conn)
 
 	t.Run("Getting existent block", func(t *testing.T) {
+		t.Parallel()
+
 		req, _ := http.NewRequest("GET", *commons.ROUTEApi+sourceId, nil)
 		res := httptest.NewRecorder()
 		r.ServeHTTP(res, req)
@@ -55,6 +55,8 @@ func TestGetBlockById(t *testing.T) {
 	})
 
 	t.Run("Getting non existent block", func(t *testing.T) {
+		t.Parallel()
+
 		req, _ := http.NewRequest("GET", *commons.ROUTEApi+"asdfasdf", nil)
 		res := httptest.NewRecorder()
 		r.ServeHTTP(res, req)
