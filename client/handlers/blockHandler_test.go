@@ -7,13 +7,10 @@ import (
 	"go-grpc/commons"
 	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
-	"log"
+	"go-grpc/commons/testUtils"
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
@@ -32,11 +29,7 @@ func TestGetBlockById(t *testing.T) {
 	r := setupTestingRoutes()
 	r.GET(*commons.ROUTEApi+":id", GetBlockByIdHandler)
 
-	conn, err := grpc.Dial(*commons.PORTClient, grpc.WithTransportCredentials(insecure.NewCredentials()))
-	if err != nil {
-		log.Fatalln("error dial create test connection", err.Error())
-	}
-	client := block.NewBlocksClient(conn)
+	client := testUtils.SetupGrpcTestClient()
 
 	t.Run("Getting existent block", func(t *testing.T) {
 		t.Parallel()
