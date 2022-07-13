@@ -3,10 +3,12 @@ package main
 import (
 	"cloud.google.com/go/bigquery"
 	"context"
+	"fmt"
 	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
 	"go-grpc/service/database"
 	"google.golang.org/api/iterator"
+	"log"
 	"time"
 )
 
@@ -25,8 +27,9 @@ func (server *Server) GetBlockById(context context.Context, req *block.RequestID
 			Value: req.GetId(),
 		},
 	}
-	iter, err := database.QueryConnection(bqQuery)
+	iter, err := database.QueryConnection(bqQuery, context)
 	if err != nil {
+		log.Fatalln("error in query connection:", err)
 		return nil, err
 	}
 
@@ -35,9 +38,11 @@ func (server *Server) GetBlockById(context context.Context, req *block.RequestID
 		var row []bigquery.Value
 		err := iter.Next(&row)
 		if err == iterator.Done {
+			fmt.Println("Iterator done", err)
 			break
 		}
 		if err != nil {
+			log.Println("error in iter.Next", err)
 			return nil, err
 		}
 		blockDAO.DataTimestamp = row[0].(time.Time)
@@ -48,6 +53,7 @@ func (server *Server) GetBlockById(context context.Context, req *block.RequestID
 		blockDAO.PrecipitationInst = row[5].(string)
 		blockDAO.PrecipitationMin = row[6].(string)
 		blockDAO.PrecipitationMax = row[7].(string)
+		fmt.Println(blockDAO)
 	}
 
 	resBlock := models.TransformBlockDAOIntoResponse(blockDAO)

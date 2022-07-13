@@ -24,17 +24,17 @@ func main() {
 	var err error
 	srv.BQClient, err = bigquery.NewClient(context.Background(), "athena-dsv")
 	if err != nil {
-		log.Panicln(err)
+		log.Fatalln("bqclient instance error:", err)
 	}
 	block.RegisterBlocksServer(server, srv)
 
 	listener, err := net.Listen("tcp", *commons.PORTService)
 	if err != nil {
-		log.Panicln(err)
+		log.Fatalln("listener instance error:", err)
 	}
 
 	err = server.Serve(listener)
 	if err != nil {
-		log.Panicln(err)
+		log.Fatalln("server.serve error:", err)
 	}
 }

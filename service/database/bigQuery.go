@@ -7,32 +7,29 @@ import (
 	"cloud.google.com/go/bigquery"
 )
 
-var (
-	ctx context.Context
-)
-
-func QueryConnection(bqQuery *bigquery.Query) (*bigquery.RowIterator, error) {
+func QueryConnection(bqQuery *bigquery.Query, ctx context.Context) (*bigquery.RowIterator, error) {
 
 	bqQuery.Location = "US"
 
 	job, err := bqQuery.Run(ctx)
 	if err != nil {
-		log.Println(err.Error())
+		log.Println("error query run - job creation:", err.Error())
 		return nil, err
 	}
 
 	status, err := job.Wait(ctx)
 	if err != nil {
-		log.Println(err.Error())
+		log.Println("error job wait - status", err.Error())
 		return nil, err
 	}
 	if err := status.Err(); err != nil {
+		log.Println("error status.err:", err)
 		return nil, err
 	}
 
 	it, err := job.Read(ctx)
 	if err != nil {
-		log.Println(err.Error())
+		log.Println("error iterator creation", err.Error())
 		return nil, err
 	}
 
