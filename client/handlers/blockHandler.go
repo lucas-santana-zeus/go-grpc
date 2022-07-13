@@ -3,6 +3,7 @@ package handlers
 import (
 	"go-grpc/client/service"
 	"go-grpc/commons/models"
+	"log"
 	"net/http"
 	"reflect"
 
@@ -15,9 +16,11 @@ func GetBlockById(c *gin.Context) {
 	blockDTO, err := service.GetBlockById(id)
 
 	if err != nil {
+		log.Println("error block returning:", err)
 		c.AbortWithStatus(http.StatusInternalServerError)
 		return
 	} else if reflect.DeepEqual(blockDTO, models.Block{}) {
+		log.Println("empty block:", err)
 		c.AbortWithStatus(http.StatusNotFound)
 		return
 	}

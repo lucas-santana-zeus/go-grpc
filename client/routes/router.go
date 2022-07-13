@@ -15,6 +15,6 @@ func HandleRoutes() {
 
 	err := r.Run(*commons.PORTGinAPI)
 	if err != nil {
-		log.Panicln(err)
+		log.Fatalln("router error:", err)
 	}
 }

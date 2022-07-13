@@ -16,7 +16,7 @@ func GetBlockById(id string) (models.Block, error) {
 
 	conn, err := grpc.Dial(*commons.PORTClient, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
-		log.Println(err.Error())
+		log.Println("error dial create connection", err.Error())
 		return models.Block{}, err
 	}
 
@@ -27,7 +27,7 @@ func GetBlockById(id string) (models.Block, error) {
 
 	res, err := client.GetBlockById(context.Background(), &req)
 	if err != nil {
-		log.Println(err.Error())
+		log.Println("err call rpc function getblockbyid", err.Error())
 		return models.Block{}, err
 	}
 
