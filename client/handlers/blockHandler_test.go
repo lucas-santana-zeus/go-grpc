@@ -7,12 +7,13 @@ import (
 	"go-grpc/commons"
 	"go-grpc/commons/models"
 	block "go-grpc/commons/pb"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"log"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
@@ -27,6 +28,9 @@ func setupTestingRoutes() *gin.Engine {
 }
 
 func TestGetBlockById(t *testing.T) {
+
+	t.Parallel()
+
 	r := setupTestingRoutes()
 	r.GET(*commons.ROUTEApi+":id", GetBlockByIdHandler)
 
