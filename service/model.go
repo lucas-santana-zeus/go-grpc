@@ -19,6 +19,10 @@ const (
 	tableName               = ProjectId + ".athena.pixel"
 )
 
+// GetBlockById BlocksServer interface implementation, consults the pixel table on BigQuery
+//
+// retrieving the last data of the day 2022-06-28 matching the id given in the request message arg and
+// returns the responseBlock message
 func (server *Server) GetBlockById(context context.Context, req *block.RequestID) (*block.ResponseBlock, error) {
 	bqQuery := server.BQClient.Query(getQueryBlock())
 	bqQuery.Parameters = []bigquery.QueryParameter{
