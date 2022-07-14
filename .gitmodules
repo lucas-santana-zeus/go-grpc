@@ -1,3 +1,3 @@
 [submodule "commons"]
 	path = commons
-	url = git@github.com:lucas-santana-zeus/grpc-commons.git
+	url = https://github.com/lucas-santana-zeus/grpc-commons.git
