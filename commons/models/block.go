@@ -16,8 +16,6 @@ type Block struct {
 	TemperatureMin    string    `json:"temperature_min"`
 	TemperatureMax    string    `json:"temperature_max"`
 	PrecipitationInst string    `json:"precipitation_inst"`
-	PrecipitationMin  string    `json:"precipitation_min"`
-	PrecipitationMax  string    `json:"precipitation_max"`
 }
 
 // TransformBlockDAOIntoResponse serializes a block to json/string format to compose the grpc responseBlock message

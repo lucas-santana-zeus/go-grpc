@@ -55,8 +55,6 @@ func (server *Server) GetBlockById(context context.Context, req *block.RequestID
 		blockDAO.TemperatureMin = row[3].(string)
 		blockDAO.TemperatureMax = row[4].(string)
 		blockDAO.PrecipitationInst = row[5].(string)
-		blockDAO.PrecipitationMin = row[6].(string)
-		blockDAO.PrecipitationMax = row[7].(string)
 		fmt.Println(blockDAO)
 	}
 
@@ -67,7 +65,7 @@ func (server *Server) GetBlockById(context context.Context, req *block.RequestID
 func getQueryBlock() string {
 	return "select (a_temp.data_timestamp) as data_timestamp, (a_temp.created_timestamp) as created_timestamp, " +
 		" a_temp.data_inst as temp_inst, a_temp.data_min as temp_min, a_temp.data_max as temp_max, " +
-		" a_prec.data_inst as prec_inst, a_prec.data_min as prec_min, a_prec.data_max as prec_max " +
+		" a_prec.data_inst as prec_inst " +
 		" from `" + tableName + "` a_temp " +
 		" inner join ( " +
 		" select data_timestamp, created_timestamp, data_inst, data_min, data_max, source_id " +
