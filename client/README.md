@@ -29,9 +29,7 @@ Returns:
   "temperature_inst": "16.158027",
   "temperature_min": "14.476000",
   "temperature_max": "19.244000",
-  "precipitation_inst": "0.000000",
-  "precipitation_min": "0.000000",
-  "precipitation_max": "0.000000"
+  "precipitation_inst": "0.000000"
 }
 ```
 

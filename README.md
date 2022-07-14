@@ -33,9 +33,7 @@ When an Id is passed through the URL, is the service who receives and searchs fo
     "temperature_inst": "21.012310",
     "temperature_min": "20.148813",
     "temperature_max": "25.221354",
-    "precipitation_inst": "0.000000",
-    "precipitation_min": "0.000000",
-    "precipitation_max": "0.000000"
+    "precipitation_inst": "0.000000"
 }
 ```
 
@@ -61,7 +59,5 @@ type Block struct {
 	TemperatureMin    string    
 	TemperatureMax    string    
 	PrecipitationInst string    
-	PrecipitationMin  string    
-	PrecipitationMax  string    
 }
 ```
